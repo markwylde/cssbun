@@ -13,14 +13,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "basictap": "^1.1.11",
     "chokidar": "^3.4.3",
     "minimist": "^1.2.5"
   },
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "basictap": "^1.1.11"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/markwylde/cssbun.git"
