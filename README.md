@@ -1,5 +1,5 @@
 # cssbun
-An extremly lightweight bundler that does nothing but merge your css files using the import syntax.
+An extremely lightweight bundler that does nothing but merge your css files using the import syntax.
 
 The end result is you can use your css files directly in the browser without being bundled, or
 you can use the bundle. They should both be interchangable.
