@@ -6,6 +6,9 @@ An extremly lightweight bundler than does nothing but bundles your css files usi
 npm install --save-dev cssbun
 ```
 
+## Example
+The best example is the [multiple test scenario](test/scenarios/multiple) used in this project.
+
 ## Usage
 ### CLI
 ```bash
