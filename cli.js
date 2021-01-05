@@ -2,7 +2,9 @@
 
 const fs = require('fs');
 const path = require('path');
+
 const minimist = require('minimist');
+const chokidar = require('chokidar');
 
 const cssbun = require('./');
 
@@ -14,9 +16,29 @@ const result = cssbun(entryFile);
 const outputFile = argv.o || argv.output;
 const outputFilePath = outputFile && path.resolve(outputFile);
 
-if (outputFilePath) {
-  fs.writeFileSync(outputFilePath, result);
-  console.log('Output successfully written to:', outputFilePath);
+function run () {
+  if (outputFilePath) {
+    fs.writeFileSync(outputFilePath, result);
+    console.log('Output successfully written to:', outputFilePath);
+  } else {
+    console.log(result);
+  }
+}
+
+const watch = argv.w || argv.watch;
+
+if (watch) {
+  if (!outputFilePath) {
+    console.log('You must specify an --output (-o) when using --watch (-w) mode');
+    process.exit(1);
+  }
+
+  chokidar.watch(watch === true ? '**/*.css' : watch, {
+    ignored: outputFile
+  }).on('change', (path, event) => {
+    console.log('detected change', path);
+    run();
+  });
 } else {
-  console.log(result);
+  run();
 }

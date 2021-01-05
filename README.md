@@ -20,6 +20,13 @@ The best example is the [multiple test scenario](test/scenarios/multiple) used i
 cssbun -o bundled.css css/index.css
 ```
 
+Optional arguments are:
+
+```text
+--watch (-w) [pattern]         rerun when the files change (default pattern is '**/*.css')
+--output (-o) fileName         output the bundle to a file instead of to stdout
+```
+
 ### Code
 ```javascript
 const cssbun = require('cssbun');

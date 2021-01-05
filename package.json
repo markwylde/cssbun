@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "basictap": "^1.1.11",
+    "chokidar": "^3.4.3",
     "minimist": "^1.2.5"
   },
   "directories": {
