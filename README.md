@@ -6,6 +6,11 @@ An extremly lightweight bundler than does nothing but bundles your css files usi
 npm install --save-dev cssbun
 ```
 
+(or) globally:
+```bash
+npm install -g cssbun
+```
+
 ## Example
 The best example is the [multiple test scenario](test/scenarios/multiple) used in this project.
 
