@@ -22,10 +22,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/markwylde/css-bun.git"
+    "url": "git+https://github.com/markwylde/cssbun.git"
   },
   "bugs": {
-    "url": "https://github.com/markwylde/css-bun/issues"
+    "url": "https://github.com/markwylde/cssbun/issues"
   },
-  "homepage": "https://github.com/markwylde/css-bun#readme"
+  "homepage": "https://github.com/markwylde/cssbun#readme"
 }
