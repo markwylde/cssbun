@@ -47,3 +47,5 @@ To include another css file in your entrypoint (or any included file) use the `@
   background-color: blue;
 }
 ```
+
+> Note: Any `$import url("???")` will not be parsed, and will stay in your bundle as intended.
