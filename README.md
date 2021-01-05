@@ -1,5 +1,8 @@
 # cssbun
-An extremly lightweight bundler than does nothing but bundles your css files using the import syntax.
+An extremly lightweight bundler than does nothing but merge your css files using the import syntax.
+
+The end result is you can use your css files direct in the browser without being bundled, or
+you can use the bundle. They should both be interchangable.
 
 ## Installation
 ```bash
@@ -34,7 +37,7 @@ const bundled = cssbun('./css/index.css');
 console.log(bundled);
 ```
 
-## CSS
+### CSS
 To include another css file in your entrypoint (or any included file) use the `@import` feature:
 
 ```css
