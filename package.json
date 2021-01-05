@@ -1,0 +1,31 @@
+{
+  "name": "cssbun",
+  "version": "1.0.0",
+  "description": "An extremly lightweight bundler than does nothing but bundles your css files using the import syntax.",
+  "main": "index.js",
+  "bin": {
+    "cssbun": "cli.js"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "basictap": "^1.1.11",
+    "minimist": "^1.2.5"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markwylde/css-bun.git"
+  },
+  "bugs": {
+    "url": "https://github.com/markwylde/css-bun/issues"
+  },
+  "homepage": "https://github.com/markwylde/css-bun#readme"
+}
