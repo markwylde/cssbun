@@ -39,6 +39,8 @@ if (watch) {
     console.log('detected change', path);
     run();
   });
+
+  run();
 } else {
   run();
 }
