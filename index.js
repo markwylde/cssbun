@@ -1,9 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
-const alreadyIncluded = [];
-
-function grabFile (fileName, bundled = '') {
+function grabFile (fileName, bundled, alreadyIncluded) {
+  bundled = bundled || '';
   const filePath = path.resolve(fileName);
   if (alreadyIncluded.includes(filePath)) {
     return bundled;
@@ -15,7 +14,7 @@ function grabFile (fileName, bundled = '') {
   const matches = content.matchAll(/^\s*@import\s+"(.*)";\s*$/mg);
 
   for (const match of matches) {
-    const subFile = grabFile(path.resolve(path.dirname(fileName), match[1]));
+    const subFile = grabFile(path.resolve(path.dirname(fileName), match[1]), '', alreadyIncluded);
 
     content = content.replace(match[0], subFile);
   }
@@ -23,4 +22,6 @@ function grabFile (fileName, bundled = '') {
   return bundled + '\n' + content;
 }
 
-module.exports = entryFile => grabFile(entryFile).trim();
+module.exports = entryFile => {
+  return grabFile(entryFile, '', []).trim();
+};
