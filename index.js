@@ -1,9 +1,15 @@
 const path = require('path');
 const fs = require('fs');
 
-function grabFile (fileName, bundled, alreadyIncluded) {
+const resolve = require('resolve');
+
+function grabFile (fileName, relativeDirectory, bundled, alreadyIncluded) {
   bundled = bundled || '';
-  const filePath = path.resolve(fileName);
+  const filePath = resolve.sync(fileName, {
+    includeCoreModules: false,
+    basedir: path.resolve(relativeDirectory)
+  });
+
   if (alreadyIncluded.includes(filePath)) {
     return bundled;
   }
@@ -14,7 +20,14 @@ function grabFile (fileName, bundled, alreadyIncluded) {
   const matches = content.matchAll(/^\s*@import\s+"(.*)";\s*$/mg);
 
   for (const match of matches) {
-    const subFile = grabFile(path.resolve(path.dirname(fileName), match[1]), '', alreadyIncluded);
+    const relativeSubDirectory = path.resolve(relativeDirectory, path.dirname(filePath));
+
+    const absoluteSubPath = resolve.sync(match[1], {
+      includeCoreModules: false,
+      basedir: relativeSubDirectory
+    });
+
+    const subFile = grabFile(match[1], path.dirname(absoluteSubPath), '', alreadyIncluded);
 
     content = content.replace(match[0], subFile);
   }
@@ -23,5 +36,6 @@ function grabFile (fileName, bundled, alreadyIncluded) {
 }
 
 module.exports = entryFile => {
-  return grabFile(entryFile, '', []).trim();
+  const fileName = './' + path.basename(entryFile);
+  return grabFile(fileName, path.dirname(entryFile), '', []).trim();
 };

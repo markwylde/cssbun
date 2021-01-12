@@ -13,14 +13,16 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "chokidar": "^3.4.3",
-    "minimist": "^1.2.5"
+    "chokidar": "^3.5.0",
+    "minimist": "^1.2.5",
+    "resolve": "^1.19.0"
   },
   "directories": {
     "test": "test"
   },
   "devDependencies": {
-    "basictap": "^1.1.11"
+    "basictap": "^1.1.11",
+    "mithui": "^1.1.9"
   },
   "repository": {
     "type": "git",
