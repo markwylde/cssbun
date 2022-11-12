@@ -1,16 +1,28 @@
 {
   "name": "cssbun",
   "version": "1.2.1",
-  "description": "An extremly lightweight bundler than does nothing but bundles your css files using the import syntax.",
+  "description": "An extremely lightweight bundler than does nothing but bundles your css files using the import syntax.",
   "main": "index.js",
   "bin": {
     "cssbun": "cli.js"
   },
   "scripts": {
-    "test": "node test"
+    "test": "c8 node test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "css",
+    "modular",
+    "bundle",
+    "modules",
+    "merge",
+    "asset",
+    "styles"
+  ],
+  "author": {
+    "name": "Mark Wylde",
+    "email": "me@markwylde.com",
+    "url": "https://github.com/markwylde"
+  },
   "license": "MIT",
   "dependencies": {
     "chokidar": "^3.5.3",
@@ -22,6 +34,7 @@
   },
   "devDependencies": {
     "basictap": "^3.4.3",
+    "c8": "^7.12.0",
     "mithui": "^2.0.9"
   },
   "repository": {
