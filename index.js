@@ -22,12 +22,7 @@ function grabFile (fileName, relativeDirectory, bundled, alreadyIncluded) {
   for (const match of matches) {
     const relativeSubDirectory = path.resolve(relativeDirectory, path.dirname(filePath));
 
-    const absoluteSubPath = resolve.sync(match[1], {
-      includeCoreModules: false,
-      basedir: relativeSubDirectory
-    });
-
-    const subFile = grabFile(match[1], path.dirname(absoluteSubPath), '', alreadyIncluded);
+    const subFile = grabFile(match[1], relativeSubDirectory, '', alreadyIncluded);
 
     content = content.replace(match[0], subFile);
   }
