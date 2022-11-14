@@ -54,7 +54,7 @@ To include another css file in your entrypoint (or any included file) use the `@
 /* import a local file */
 @import "./included.css";
 
-/* import at runtime (don't bundle */
+/* import at runtime (don't bundle) */
 @import url("https://unpkg.com/ress/dist/ress.min.css");
 
 .test {
