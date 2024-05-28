@@ -1,20 +1,24 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import minimist from 'minimist';
+import chokidar from 'chokidar';
+import cssbun from './index.js';
 
-const minimist = require('minimist');
-const chokidar = require('chokidar');
-
-const cssbun = require('./');
-
-const argv = minimist(process.argv);
-const entryFile = argv._[2];
+const argv = minimist(process.argv.slice(2));
+const entryFile = argv._[0];
 
 const outputFile = argv.o || argv.output;
 const outputFilePath = outputFile && path.resolve(outputFile);
 
-function run () {
+function run() {
+  if (!entryFile) {
+    console.log('You must provide an entryFile as the first argument')
+    console.log('\n  cssbun -o bundled.css css/index.css')
+    process.exit(1);
+  }
+
   const result = cssbun(entryFile);
 
   if (outputFilePath) {
@@ -35,7 +39,7 @@ if (watch) {
 
   chokidar.watch(watch === true ? '**/*.css' : watch, {
     ignored: outputFile
-  }).on('change', (path, event) => {
+  }).on('change', (path) => {
     console.log('detected change', path);
     run();
   });

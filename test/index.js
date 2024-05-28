@@ -1,24 +1,21 @@
-const test = require('basictap');
-const cssmin = require('../');
+import test from 'node:test';
+import assert from 'assert';
+import cssmin from '../index.js';
 
-test('bundle single file', t => {
-  t.plan(1);
-
+test('bundle single file', async () => {
   const result = cssmin('./test/scenarios/single/index.css');
 
-  t.equal(result, [
+  assert.strictEqual(result, [
     'body {',
     '  background-color: red;',
     '}'
   ].join('\n'));
 });
 
-test('bundle multiple file', t => {
-  t.plan(1);
-
+test('bundle multiple file', async () => {
   const result = cssmin('./test/scenarios/multiple/index.css');
 
-  t.equal(result, [
+  assert.strictEqual(result, [
     '.subTest {',
     '  background-color: pink;',
     '}',
@@ -33,12 +30,10 @@ test('bundle multiple file', t => {
   ].join('\n'));
 });
 
-test('bundle file from sub directory', t => {
-  t.plan(1);
-
+test('bundle file from sub directory', async () => {
   const result = cssmin('./test/scenarios/subdirectory/index.css');
 
-  t.equal(result, [
+  assert.strictEqual(result, [
     '.subTest {',
     '  background-color: pink;',
     '}',
@@ -53,12 +48,10 @@ test('bundle file from sub directory', t => {
   ].join('\n'));
 });
 
-test('bundle dependency in sub directory', t => {
-  t.plan(1);
-
+test('bundle dependency in sub directory', async () => {
   const result = cssmin('./test/scenarios/dependencysub/index.css');
 
-  t.equal(result, [
+  assert.strictEqual(result, [
     'mui-text-input input:focus {',
     '  border-color: blue;',
     '  outline: none;',
@@ -79,12 +72,10 @@ test('bundle dependency in sub directory', t => {
   ].join('\n'));
 });
 
-test('bundle from dependency', t => {
-  t.plan(1);
-
+test('bundle from dependency', async () => {
   const result = cssmin('./test/scenarios/dependency/index.css');
 
-  t.equal(result, [
+  assert.strictEqual(result, [
     'mui-text-input input:focus {',
     '  border-color: blue;',
     '  outline: none;',
@@ -105,12 +96,10 @@ test('bundle from dependency', t => {
   ].join('\n'));
 });
 
-test('bundle same file twice', t => {
-  t.plan(1);
-
+test('bundle same file twice', async () => {
   const result = cssmin('./test/scenarios/sameFileTwice/index.css');
 
-  t.equal(result, [
+  assert.strictEqual(result, [
     '.test {',
     '  background-color: blue;',
     '}',
