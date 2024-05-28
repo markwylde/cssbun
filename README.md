@@ -34,7 +34,7 @@ Optional arguments are:
 
 ### Code
 ```javascript
-const cssbun = require('cssbun');
+import cssbun from 'cssbun';
 const bundled = cssbun('./css/index.css');
 console.log(bundled);
 ```
