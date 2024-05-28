@@ -1,7 +1,6 @@
-const path = require('path');
-const fs = require('fs');
-
-const resolve = require('resolve');
+import path from 'node:path';
+import fs from 'node:fs';
+import resolve from 'resolve';
 
 function grabFile (fileName, relativeDirectory, bundled, alreadyIncluded) {
   bundled = bundled || '';
@@ -30,7 +29,7 @@ function grabFile (fileName, relativeDirectory, bundled, alreadyIncluded) {
   return bundled + '\n' + content;
 }
 
-module.exports = entryFile => {
+export default entryFile => {
   const fileName = './' + path.basename(entryFile);
   return grabFile(fileName, path.dirname(entryFile), '', []).trim();
 };
