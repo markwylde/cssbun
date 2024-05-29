@@ -61,3 +61,28 @@ To include another css file in your entrypoint (or any included file) use the `@
   background-color: blue;
 }
 ```
+
+To import with media query and / or supports condition
+```css
+@import "./index-p3.css" supports(color: color(display-p3 1 0 0)) (color-gamut: p3);
+```
+
+To import with layer name
+
+```css
+@layer reset, self;
+
+@import "./reset.css" layer(reset);
+
+@layer self {
+  fieldset {
+    border-radius: 2px;
+  }
+}
+
+```
+
+**Notes:** 
+
++ Avoid mixed line-endings (LF and CRLF) in css files, since cssbun doesn't normalize line-endings.
++ It is recommended to add editorconfig `insert_final_newline = true` for css files, or output css may look weird.
