@@ -1,0 +1,12 @@
+@layer reset, self;
+
+@import "./reset.css" layer(reset);
+@import "./utils.css";
+@import "./index-p3.css" supports(color: color(display-p3 1 0 0)) (color-gamut: p3);
+@import "./index-dark.css" (prefers-color-scheme: dark);
+
+@layer self {
+  fieldset {
+    border-radius: 2px;
+  }
+}

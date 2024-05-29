@@ -1,4 +1,4 @@
-@import "./included.css";
+@import "./subIncluded.css";
 
 .test {
   background-color: blue;

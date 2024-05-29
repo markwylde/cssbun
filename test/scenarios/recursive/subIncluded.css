@@ -1,0 +1,5 @@
+@import "./included.css";
+
+.subTest {
+  background-color: pink;
+}

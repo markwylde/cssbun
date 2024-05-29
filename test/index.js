@@ -1,5 +1,6 @@
 import test from 'node:test';
-import assert from 'assert';
+import assert from 'node:assert';
+import fs from 'node:fs';
 import cssmin from '../index.js';
 
 test('bundle single file', async () => {
@@ -94,13 +95,17 @@ body {
 test('bundle same file twice', async () => {
   const result = cssmin('./test/scenarios/sameFileTwice/index.css');
 
-  assert.strictEqual(result, `
-.test {
-  background-color: blue;
-}
+  assert.strictEqual(result, fs.readFileSync('./test/scenarios/sameFileTwice/index.bundle.css', {encoding: 'utf-8'}));
+});
 
-body {
-  background-color: red;
-}
-`);
+test('bundle with media query and other import options', async () => {
+  const result = cssmin('./test/scenarios/mediaQuery/index.css');
+
+  assert.strictEqual(result, fs.readFileSync('./test/scenarios/mediaQuery/index.bundle.css', {encoding: 'utf-8'}));
+});
+
+test('bundle files with recursive import', async () => {
+  const result = cssmin('./test/scenarios/recursive/index.css');
+
+  assert.strictEqual(result, fs.readFileSync('./test/scenarios/recursive/index.bundle.css', {encoding: 'utf-8'}));
 });
