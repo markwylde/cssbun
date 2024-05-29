@@ -1,0 +1,32 @@
+@layer reset, self;
+
+@layer reset {
+input[type="number"] {
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+}
+.box {
+  border-color: #ff0000;
+}
+@media (color-gamut: p3) {
+@supports (color: color(display-p3 1 0 0)) {
+.box {
+  border-color: color(display-p3 1 0 0);
+}
+}
+}
+@media (prefers-color-scheme: dark) {
+body {
+  background-color: #121212;
+}
+}
+
+@layer self {
+  fieldset {
+    border-radius: 2px;
+  }
+}

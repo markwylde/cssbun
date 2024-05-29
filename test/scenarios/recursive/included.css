@@ -1,0 +1,5 @@
+@import "./subIncluded.css";
+
+.test {
+  background-color: blue;
+}
