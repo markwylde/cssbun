@@ -16,7 +16,7 @@ function grabFile (fileName, relativeDirectory, bundled, alreadyIncluded) {
 
   let content = fs.readFileSync(filePath, 'utf8');
 
-  const matches = content.matchAll(/^\s*@import\s+"(.*)";\s*$/mg);
+  const matches = content.matchAll(/^@import\s+"(.*)";(\r?\n?)$/mg);
 
   for (const match of matches) {
     const relativeSubDirectory = path.resolve(relativeDirectory, path.dirname(filePath));
@@ -26,10 +26,10 @@ function grabFile (fileName, relativeDirectory, bundled, alreadyIncluded) {
     content = content.replace(match[0], subFile);
   }
 
-  return bundled + '\n' + content;
+  return bundled + content;
 }
 
 export default entryFile => {
   const fileName = './' + path.basename(entryFile);
-  return grabFile(fileName, path.dirname(entryFile), '', []).trim();
+  return grabFile(fileName, path.dirname(entryFile), '', []);
 };
